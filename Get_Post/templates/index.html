@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{%block title %} Index Page {% endblock %}
+{% block content %}
+
+<h1>Hello World</h1>
+<form action="{{url_for ('index')}}" , method="POST">
+    <input type="text" name="Username" placeholder="Username"><br>
+    <input type="password" name="password" placeholder="Password"><br>
+    <input type="submit" value="Login"><br>
+</form>
+
+
+<h1>File Upload</h1>
+<form action="{{url_for('upload_file')}}", method = "POST", enctype ="multipart/form-data">
+
+
+    <input type="file" name="file" accept="application/vnd.openxmlformats-officedocument.spreadsheetml.sheet, application/vnd.ms-excel, text/plain" required="required"><br>
+
+    <input type="submit" value="Upload File">
+</form>
+
+{% endblock %}
