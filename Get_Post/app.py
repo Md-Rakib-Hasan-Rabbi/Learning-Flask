@@ -1,10 +1,10 @@
 import os
 import uuid
 import pandas as pd
-from flask import Flask, request, render_template, Response, send_from_directory
+from flask import Flask, request, render_template, Response, send_from_directory, jsonify
 
 
-app = Flask(__name__, template_folder='templates')
+app = Flask(__name__, template_folder='templates',static_folder='static', static_url_path='/')
 
 
 @app.route('/', methods=['GET','POST'])
@@ -33,7 +33,16 @@ def upload_file():
     
 
 
+@app.route('/handle_post', methods=['POST'])
+def handle_post():
+    greetings = request.json.get('greetings')
+    name= request.json.get('name')
+    
 
+    with open('file.txt', 'w') as f:
+        f.write(f"{greetings}, {name}!")
+
+    return jsonify({'message':'Successfully written' })
 
 
 
