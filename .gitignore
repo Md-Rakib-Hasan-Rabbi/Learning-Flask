@@ -41,6 +41,11 @@ env/
 instance/
 .webassets-cache
 
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
 # Uploaded files
 *.xlsx
 *.xls
